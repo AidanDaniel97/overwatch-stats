@@ -1,0 +1,86 @@
+{
+  "manifest_version": 1,
+  "type": "WebApp",
+  "meta": {
+	"name": "Overwatch Stats",
+	"author": "Aidan Daniel",
+	"version": "1.0.0",
+	"minimum-overwolf-version": "0.99.218",
+	"access-name": "",
+	"description": "Get real-time in-game stats of your Overwatch games.",
+	"dock_button_title": "Overwatch Stats",
+	"icon": "IconMouseOver.png",
+	"icon_gray": "IconMouseNormal.png"
+  },
+  "permissions": [
+	"Profile",
+	"Hotkeys",
+	"GameInfo",
+	"Extensions",
+	"Streaming",
+	"FileSystem"
+  ],
+  "dependencies": [],
+  "data": {
+	"windows": {
+	  "index": {
+		"file": "index.html",
+		"show_in_taskbar": true,
+		"transparent": false,
+		"resizable": true,
+		"show_minimize": true,
+		"clickthrough": false,
+		"show_only_on_stream": false,
+		"ignore_keyboard_events": false,
+		"in_game_only": false,
+		"desktop_only": false,
+		"disable_restore_animation": true,
+		"grab_keyboard_focus": false,
+		"size": {
+		  "width": 300,
+		  "height": 300
+		},
+		"min_size": {},
+		"max_size": {},
+		"start_position": {
+		  "left": 100,
+		  "top": 100
+		},
+		"topmost": false,
+		"block_top_window_navigation": false,
+		"popup_blocker": false
+	  }
+	},
+	"start_window": "index",
+	"externally_connectable": {
+	  "matches": [
+		"http://*.overwolf.com*",
+		"http://*.overwolf.co*",
+		"http://localhost*",
+		"http://legbuilds.overwolf.co",
+    "http://localhost:4200"
+	  ]
+	},
+	"extra-objects": {
+	},
+	"hotkeys": {
+	  "show_hide_app": {
+		"title": "Show/Hide in-game",
+		"action-type": "custom",
+		"default": "ctrl+o"
+	  }
+	},
+	"launch_events": [
+	  {
+		"event": "GameLaunch",
+		"event_data": {
+		  "game_ids": [
+			10844
+		  ]
+		},
+		"start_minimized": true
+	  }
+	],
+	"game_events": [ 10844 ]
+  }
+}
