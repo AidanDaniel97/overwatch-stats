@@ -3,30 +3,34 @@
   <!-- Handlebars template -->
 
 
-  <newUser v-if="firstLaunch"></newUser>
+  <newUser v-on:firstLaunch="onFirstLaunch" v-if="firstLaunch"></newUser>
 
 
 
-
-
-
+  <eventListener></eventListener>
   </div>
 </template>
 
 <script>
 import newUser from './components/newUser.vue'
+import eventListener from './components/eventListener.vue'
 export default {
   name: 'app',
   components: {
-     newUser
+     newUser,
+     eventListener
   },
 	data(){
 		return{
       firstLaunch: true,
 		}
 	},
-
-
+  methods:{
+    onFirstLaunch: function(){
+      this.firstLaunch = false;
+      console.log("user set.")
+    }
+  },
 }
 
 
@@ -40,7 +44,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #2c3e50; 
 }
 </style>

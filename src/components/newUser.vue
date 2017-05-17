@@ -1,9 +1,9 @@
 <template>
 	<div class="newUser">
-		<nav class="navbar navbar-default">
+		<nav  @mousedown="dragWindow" class="navbar navbar-default">
 		  <div class="container-fluid">
 		    <div class="navbar-header">
-		      <a class="navbar-brand" href="#"> 
+		      <a class="navbar-brand" href="#">
 		      </a>
 		    </div>
 		  </div>
@@ -11,24 +11,24 @@
 
 
 		<div class="container-fluid">
-			<div class="col-sm-12"><h1>{{message}}</h1></div>
-			<div class="col-sm-12"><p>{{intro}}</p></div>
+			<div class="col-sm-12"><h1 class="app-title">{{message}}</h1></div>
+			<div class="col-sm-12"><p class="app-intro">{{intro}}</p></div>
 			<div class="col-sm-12">
-				<input v-model="user.battlenetName" placeholder="Moosey#2314">
+				<input v-model="user.battlenetName" placeholder="Moosey-2314">
 
 				<select v-model="user.region">
-				  <option disabled value="">Please select one</option>
+				  <option disabled value="">Region</option>
 				  <option>EU</option>
 				  <option>US</option>
 				  <option>KR</option>
 				</select>
-
+			</div>
 
 				<div class="col-sm-12"><p>{{user.battlenetName}}</p></div>
 
 				<div class="col-sm-12"><p>{{user.region}}</p></div>
 
-				<button v-on:click="getPlayer">Test</button>
+				<button v-on:click="getPlayer" class="overwatch-button-secondary">Test</button>
 
 				<!--<img :src="this.user.avatar" width="400" height="400"/>-->
 
@@ -45,7 +45,7 @@
 		name: "newUser",
 		data(){
 			return{
-				message: "Welcome to Overwatch Stats",
+				message: "Overwatch HQ",
 				intro: "Please enter your Battlenet name & region.",
 				user:{
 					battlenetName: "",
@@ -59,20 +59,12 @@
 			}
 		},
 		methods:{
-			getPlayer: function(){
-				this.$http.get('https://owapi.net/api/v3/u/'+ this.user.battlenetName + '/stats?platform=pc')
-            .then(response => {
-               this.getTemp = response.data;
-							 console.log(response.data);
-               // or like this this.getTemp = response.json()
-							 this.json_response = response.data;
-							 this.user.quickplayStats = response.data[this.user.region.toLowerCase()].stats.quickplay
-							 this.user.competitiveStats = response.data[this.user.region.toLowerCase()].stats.competitive
-							 this.user.avatar = response.data[this.user.region.toLowerCase()].stats.quickplay.overall_stats.avatar
-							 console.log(this.user.quickplayStats, this.user.competitiveStats);
-
-							 console.log(this.user.quickplayStats.overall_stats.wins)
-            });
+			dragWindow: function(){
+				overwolf.windows.getCurrentWindow(function(result) {
+					if(result.status === "success") {
+			        overwolf.windows.dragMove(result.window.id);
+			    }
+			});
 			}
 
 
@@ -81,6 +73,7 @@
 </script>
 
 <style scoped>
-
-
+	.navbar{
+		height:30px;
+	}
 </style>
