@@ -26,7 +26,7 @@
 	  "index": {
 		"file": "index.html",
 		"show_in_taskbar": true,
-		"transparent": false,
+		"transparent": true,
 		"resizable": false,
 		"show_minimize": true,
 		"clickthrough": false,
@@ -36,12 +36,9 @@
 		"desktop_only": false,
 		"disable_restore_animation": true,
 		"grab_keyboard_focus": false,
-		"size": {
-		  "width": 450,
-		  "height": 616
-		},
-		"min_size": {},
-		"max_size": {},
+    "size": {"width": 370, "height": 630},
+    "min_size": {"width": 370, "height": 630},
+    "max_size": {"width": 370, "height": 630}, 
 		"start_position": {
 		  "left": 100,
 		  "top": 100

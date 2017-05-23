@@ -8,15 +8,16 @@
 		name: "eventListener",
 		data(){
 			return{
-				message: "Welcome to Overwatch Stats"
+				game_events: ['kills','death','preGame','postGame','player']
 			}
 		},
-		methods:{
-			getPlayer: function(){
-				this.$emit('firstLaunch', false)//Set first launch to false
-			}
-		}
 	}
+
+/*
+	overwolf.games.onGameInfoUpdated.addListener(function (res) {
+		console.log("onGameInfoUpdated: " + JSON.stringify(res));
+	})*/
+
 </script>
 
 <style scoped>
