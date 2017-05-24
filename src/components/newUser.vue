@@ -3,8 +3,11 @@
 		<nav  @mousedown="dragWindow" class="navbar navbar-default">
 		  <div class="container-fluid">
 		    <div class="navbar-header">
-		      <a class="navbar-brand" href="#">
+					<a  @mousedown="closeWindow" class="navbar-brand" href="#">
 						&#10006;
+					</a>
+		      <a  @mousedown="minimizeWindow" class="navbar-brand minimize" href="#">
+						&#128469;
 		      </a>
 		    </div>
 		  </div>
@@ -14,11 +17,12 @@
 		<div class="container-fluid">
 			<div class="col-xs-12"><h1 class="app-title">{{message}}</h1></div>
 			<div class="col-xs-12"><p class="app-intro">{{intro}}</p></div>
+
 			<div class="col-xs-6 col-xs-offset-1 input-box">
-				<input v-model="user.battlenetName" placeholder="Moosey-2314">
+				<input class="username" v-model="user.battlenetName" placeholder="Moosey-2314">
 			</div>
 			<div class="col-xs-4 input-box">
-				<select v-model="user.region">
+				<select v-model="user.region" class="region">
 				  <option disabled value="">Region</option>
 				  <option>EU</option>
 				  <option>US</option>
@@ -27,11 +31,7 @@
 			</div>
 
 
-			<div class="col-xs-12"><p>{{user.battlenetName}}</p></div>
-
-			<div class="col-xs-12"><p>{{user.region}}</p></div>
-
-			<div class="col-xs-12">
+			<div class="col-xs-12 login-button">
 				<button v-on:click="getPlayer" class="overwatch-button-primary">Start</button>
 			</div>
 
@@ -71,6 +71,20 @@
 			    }
 				});
 			},
+			closeWindow: function(){
+				overwolf.windows.getCurrentWindow(function(result) {
+					if(result.status === "success") {
+			        overwolf.windows.close(result.window.id);
+			    }
+				});
+			},
+			minimizeWindow: function(){
+				overwolf.windows.getCurrentWindow(function(result) {
+					if(result.status === "success") {
+			        overwolf.windows.minimize(result.window.id);
+			    }
+				});
+			},
 			getPlayer: function(){
 					this.$http.get('https://owapi.net/api/v3/u/'+ this.user.battlenetName + '/stats?platform=pc')
 						.then(response => {
@@ -81,9 +95,7 @@
 							 this.user.quickplayStats = response.data[this.user.region.toLowerCase()].stats.quickplay
 							 this.user.competitiveStats = response.data[this.user.region.toLowerCase()].stats.competitive
 							 this.user.avatar = response.data[this.user.region.toLowerCase()].stats.quickplay.overall_stats.avatar
-							 console.log(this.user.quickplayStats, this.user.competitiveStats);
-
-							 console.log(this.user.quickplayStats.overall_stats.wins)
+							 this.$emit("playerSet",this.user);
 				});
 			},
 		}

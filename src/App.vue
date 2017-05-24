@@ -1,10 +1,9 @@
 <template>
   <div id="app">
   <!-- Handlebars template -->
-
-
-  <newUser v-on:firstLaunch="onFirstLaunch" v-if="firstLaunch"></newUser>
-
+  <transition name="slide-fade">
+    <newUser @playerSet="onPlayerSet" v-on:firstLaunch="onFirstLaunch" v-if="firstLaunch"></newUser>
+  </transition>
 
 
   <eventListener></eventListener>
@@ -26,9 +25,9 @@ export default {
 		}
 	},
   methods:{
-    onFirstLaunch: function(){
+    onPlayerSet (value) {
+      console.log("Value recieved" , value) // someValue
       this.firstLaunch = false;
-      console.log("user set.")
     }
   },
 }
