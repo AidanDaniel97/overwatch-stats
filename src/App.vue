@@ -2,22 +2,29 @@
   <div id="app">
   <!-- Handlebars template -->
   <transition name="slide-fade">
-    <newUser @playerSet="onPlayerSet" v-on:firstLaunch="onFirstLaunch" v-if="firstLaunch"></newUser>
+    <newUser @playerSet="onPlayerSet"  v-transition stagger="100" v-if="firstLaunch"></newUser>
+  </transition>
+
+  <transition name="slide-fade">
+    <miniStats v-if="!firstLaunch" enter-stagger="2000"></miniStats>
   </transition>
 
 
+  <!--Load event listener-->
   <eventListener></eventListener>
   </div>
 </template>
 
 <script>
 import newUser from './components/newUser.vue'
+import miniStats from './components/miniStats.vue'
 import eventListener from './components/eventListener.vue'
 export default {
   name: 'app',
   components: {
      newUser,
-     eventListener
+     eventListener,
+     miniStats
   },
 	data(){
 		return{

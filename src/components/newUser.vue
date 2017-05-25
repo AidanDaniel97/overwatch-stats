@@ -15,21 +15,28 @@
 
 
 		<div class="container-fluid">
-			<div class="col-xs-12"><h1 class="app-title">{{message}}</h1></div>
-			<div class="col-xs-12"><p class="app-intro">{{intro}}</p></div>
-
-			<div class="col-xs-6 col-xs-offset-1 input-box">
-				<input class="username" v-model="user.battlenetName" placeholder="Moosey-2314">
+			<div class="row">
+				<div class="col-xs-12"><h1 class="app-title">{{message}}</h1></div>
 			</div>
-			<div class="col-xs-4 input-box">
-				<select v-model="user.region" class="region">
-				  <option disabled value="">Region</option>
-				  <option>EU</option>
-				  <option>US</option>
-				  <option>KR</option>
-				</select>
+			<div class="row">
+				<div class="col-xs-12"><p class="app-intro">{{intro}}</p></div>
 			</div>
 
+			<div class="row">
+				<div class="col-xs-6 col-xs-offset-1 input-box">
+					<input class="username" v-model="user.battlenetName" placeholder="Moosey-2314">
+				</div>
+
+				<div class="col-xs-4 input-box">
+						<select v-model="user.region" class="region">
+						  <option disabled value="">Region</option>
+						  <option>EU</option>
+						  <option>US</option>
+						  <option>KR</option>
+						</select>
+				</div>
+
+			</div>
 
 			<div class="col-xs-12 login-button">
 				<button v-on:click="getPlayer" class="overwatch-button-primary">Start</button>
@@ -86,7 +93,7 @@
 				});
 			},
 			getPlayer: function(){
-					this.$http.get('https://owapi.net/api/v3/u/'+ this.user.battlenetName + '/stats?platform=pc')
+					/*this.$http.get('https://owapi.net/api/v3/u/'+ this.user.battlenetName + '/stats?platform=pc')
 						.then(response => {
 							 this.getTemp = response.data;
 							 console.log(response.data);
@@ -95,8 +102,9 @@
 							 this.user.quickplayStats = response.data[this.user.region.toLowerCase()].stats.quickplay
 							 this.user.competitiveStats = response.data[this.user.region.toLowerCase()].stats.competitive
 							 this.user.avatar = response.data[this.user.region.toLowerCase()].stats.quickplay.overall_stats.avatar
-							 this.$emit("playerSet",this.user);
-				});
+
+				});*/
+				this.$emit("playerSet",this.user);
 			},
 		}
 	}
