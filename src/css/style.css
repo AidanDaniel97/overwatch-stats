@@ -27,15 +27,41 @@ body {
 }
 
 #app{
-      background-color: #2f3543;
-      transition: height 0.3s linear;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+
 }
 
 .newUser{
+  transition: height 0.3s linear;
   height:360px;
   overflow: hidden;
+  background-color: #2f3543;
 }
 
+
+.miniStats{
+  height:65px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.miniStats .container-fluid{
+  height:65px;
+  overflow: hidden;
+  border-left:8px solid #bbfc32;
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+
+.miniStats p {
+    margin: 0 0 0px !important;
+}
 /*navbar*/
 
 
@@ -185,22 +211,82 @@ p{
 
 }
 
+
+/*Mini stats*/
+.player-portrait{
+  height: 64px;
+  float: left;
+  border-radius: 3px;
+}
+
+.portrait-holder{
+  padding-left:0px;
+}
+
+.stats-controls{
+  height:65px;
+  opacity:0;
+  transition: 0.3s ease;
+}
+
+.stats-close{
+  color: #337ab7;
+  background: #2c3e50;
+  padding: 2px;
+  color: white;
+  text-decoration: none;
+
+}
+
+.miniStats:hover .stats-controls{
+  opacity:1;
+}
+
+.stats-close:hover{
+  color:#ff9c00;
+  text-decoration: none;
+}
+
 /*Animations*/
 /* Enter and leave animations can use different */
 /* durations and timing functions.              */
-.slide-fade-enter-active {
+.slide-fade-in-enter-active {
   transition: all .3s ease;
+  transition-delay: 1.3s;
 }
-.slide-fade-leave-active {
+.slide-fade-in-leave-active {
   transition: all .8s linear;
+  transition-delay: 1.3s;
 }
 
-.slide-fade-leave-active {
+.slide-fade-in-leave-active {
   transition: all .8s linear;
+  transition-delay: 1.3s;
 }
 
-.slide-fade-enter, .slide-fade-leave-to
+.slide-fade-in-enter, .slide-fade-in-leave-to
 /* .slide-fade-leave-active for <2.1.8 */ {
   height:0px;
   opacity: 0;
+  transition-delay: 1.3s;
+}
+
+
+/*Animations*/
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-fade-out-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-out-leave-active {
+  transition: all .8s linear;
+}
+
+.slide-fade-out-leave-active {
+  transition: all .8s linear;
+}
+
+.slide-fade-out-enter, .slide-fade-out-leave-to
+/* .slide-fade-leave-active for <2.1.8 */ {
+  height:0px;
 }

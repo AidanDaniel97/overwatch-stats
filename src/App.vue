@@ -1,12 +1,12 @@
 <template>
   <div id="app">
   <!-- Handlebars template -->
-  <transition name="slide-fade">
-    <newUser @playerSet="onPlayerSet"  v-transition stagger="100" v-if="firstLaunch"></newUser>
+  <transition name="slide-fade-out">
+    <newUser @playerSet="onPlayerSet" v-if="firstLaunch"></newUser>
   </transition>
 
-  <transition name="slide-fade">
-    <miniStats v-if="!firstLaunch" enter-stagger="2000"></miniStats>
+  <transition name="slide-fade-in">
+    <miniStats :userData='userData' v-if="!firstLaunch"></miniStats>
   </transition>
 
 
@@ -28,12 +28,14 @@ export default {
   },
 	data(){
 		return{
-      firstLaunch: true,
+      firstLaunch: true,//set to true for production
+      userData: null,
 		}
 	},
   methods:{
-    onPlayerSet (value) {
-      console.log("Value recieved" , value) // someValue
+    onPlayerSet (user_data) {
+      console.log("Value recieved" , user_data) // someValue
+      this.userData = user_data;
       this.firstLaunch = false;
     }
   },

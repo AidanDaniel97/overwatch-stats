@@ -93,18 +93,16 @@
 				});
 			},
 			getPlayer: function(){
-					/*this.$http.get('https://owapi.net/api/v3/u/'+ this.user.battlenetName + '/stats?platform=pc')
+					this.$http.get('https://owapi.net/api/v3/u/'+ this.user.battlenetName + '/stats?platform=pc')
 						.then(response => {
 							 this.getTemp = response.data;
 							 console.log(response.data);
-			// or like this this.getTemp = response.json()
-							 this.json_response = response.data;
-							 this.user.quickplayStats = response.data[this.user.region.toLowerCase()].stats.quickplay
-							 this.user.competitiveStats = response.data[this.user.region.toLowerCase()].stats.competitive
-							 this.user.avatar = response.data[this.user.region.toLowerCase()].stats.quickplay.overall_stats.avatar
-
-				});*/
-				this.$emit("playerSet",this.user);
+							 // or like this this.getTemp = response.json()
+							 localStorage.setItem("user_region", this.user.region.toLowerCase());
+							 localStorage.setItem("user_battlenet", this.user.battlenetName)
+			 				 localStorage.setItem("user_data",JSON.stringify(response.data));
+			 				 this.$emit("playerSet",response.data);
+				});
 			},
 		}
 	}
