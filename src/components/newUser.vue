@@ -101,7 +101,7 @@
 							 localStorage.setItem("user_region", this.user.region.toLowerCase());
 							 localStorage.setItem("user_battlenet", this.user.battlenetName)
 			 				 localStorage.setItem("user_data",JSON.stringify(response.data));
-			 				 this.$emit("playerSet",response.data);
+			 				 this.$emit("playerSet",{"userData":response.data, "userRegion":this.user.region.toLowerCase(), "userbattlenet":this.user.battlenetName});
 				});
 			},
 		}

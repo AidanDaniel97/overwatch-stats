@@ -4,12 +4,11 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-3 portrait-holder">
-					<img src="https://blzgdapipro-a.akamaihd.net/game/unlocks/0x0250000000000B14.png" class="player-portrait">
+					<img :src="this.userData.userData[this.user.region].stats.quickplay.overall_stats.avatar" class="player-portrait">
 				</div>
 				<div class="col-xs-6">
 					<p>Moosey#2314</p>
 					<p>Level 7</p>
-					<p>{{userData.eu.stats.quickplay.overall_stats.avatar}}</p>
 				</div>
 				<div class="col-xs-offset-2 col-xs-1 stats-controls">
 					<a  @mousedown="closeWindow" class="stats-close" href="#">
@@ -35,8 +34,8 @@
 			return{
 				message: "mini stats",
 				user:{
-					battlenetName: "",
-					region: "",
+					battlenetName:  this.userData.userbattlenet,
+					region:  this.userData.userRegion,
 					quickplayStats: "",
 					avatar: "",
 					competitiveStats: "",
@@ -73,7 +72,8 @@
 			},
 			toggleFeed: function(){
 				console.log("Toggled")
-				console.log(this.userData)
+				console.log(this.user.region)
+				console.log()
 			}
 		}
 	}
