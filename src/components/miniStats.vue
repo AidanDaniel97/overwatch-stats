@@ -1,14 +1,14 @@
 <template>
-	<div @mousedown="dragWindow" @contextmenu="toggleFeed" class="miniStats" style="background-image:url('src/assets/img/pharah-background.png');border-radius:3px;">
+	<div  @mousedown="dragWindow" @contextmenu="toggleFeed" class="miniStats" style="background-image:url('src/assets/img/pharah-background.png')">
 
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xs-3 portrait-holder">
-					<img :src="this.userData.userData[this.user.region].stats.quickplay.overall_stats.avatar" class="player-portrait">
+				<div class="col-xs-2 portrait-holder">
+					<img :src="this.user.avatar" class="player-portrait">
 				</div>
-				<div class="col-xs-6">
-					<p>Moosey#2314</p>
-					<p>Level 7</p>
+				<div class="col-xs-7 user-data">
+					<p>{{user.battlenetName}}</p>
+					<p>Level {{user.userLevel}}</p>
 				</div>
 				<div class="col-xs-offset-2 col-xs-1 stats-controls">
 					<a  @mousedown="closeWindow" class="stats-close" href="#">
@@ -37,16 +37,17 @@
 					battlenetName:  this.userData.userbattlenet,
 					region:  this.userData.userRegion,
 					quickplayStats: "",
-					avatar: "",
+					avatar: this.userData.userData[this.userData.userRegion].stats.quickplay.overall_stats.avatar,
 					competitiveStats: "",
-					statsRoute: ""
+					statsRoute: "",
+					userLevel: this.userData.userData[this.userData.userRegion].stats.quickplay.overall_stats.level,
 				},
 				json_response: "No response data"
 			}
 		},
 		props: {
 			userData: app.userData, // you need to give the parent components' data here.
-			userRegion: "eu"
+			userRegion: "eu",
 		 },
 		methods:{
 			dragWindow: function(){
@@ -71,9 +72,10 @@
 				});
 			},
 			toggleFeed: function(){
-				console.log("Toggled")
-				console.log(this.user.region)
-				console.log()
+
+      this.$emit('toggleFeed')
+			console.log("Sent emit")
+
 			}
 		}
 	}

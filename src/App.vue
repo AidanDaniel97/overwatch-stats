@@ -6,7 +6,11 @@
   </transition>
 
   <transition name="slide-fade-in">
-    <miniStats :userData='userData' v-if="!firstLaunch"></miniStats>
+    <miniStats :userData='userData' @toggleFeed="onToggleFeed" v-if="!firstLaunch"></miniStats>
+  </transition>
+
+  <transition name="slide-in">
+    <mainFeed v-if="toggleFeed"></mainFeed>
   </transition>
 
 
@@ -19,17 +23,20 @@
 import newUser from './components/newUser.vue'
 import miniStats from './components/miniStats.vue'
 import eventListener from './components/eventListener.vue'
+import mainFeed from './components/mainFeed.vue'
 export default {
   name: 'app',
   components: {
      newUser,
      eventListener,
-     miniStats
+     miniStats,
+     mainFeed
   },
 	data(){
 		return{
       firstLaunch: true,//set to true for production
       userData: null,
+      toggleFeed: false
 		}
 	},
   methods:{
@@ -37,8 +44,16 @@ export default {
       console.log("Value recieved" , user_data) // someValue
       this.userData = user_data;
       this.firstLaunch = false;
-    }
-  },
+    },
+    onToggleFeed(toggle){
+      console.log("Feed toggled");
+      if (this.toggleFeed){
+        this.toggleFeed = false;
+      }else{
+        this.toggleFeed = true;
+      }
+    },
+  }
 }
 
 
@@ -47,11 +62,5 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+
 </style>

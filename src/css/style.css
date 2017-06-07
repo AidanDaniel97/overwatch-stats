@@ -36,6 +36,11 @@ body {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+
 }
 
 .newUser{
@@ -46,17 +51,23 @@ body {
 }
 
 
+.mainFeed{
+    transition: height 0.3s linear;
+    height:360px;
+    overflow: hidden;
+    background-color: #2f3543;
+}
+
 .miniStats{
   height:65px;
   overflow: hidden;
   cursor: pointer;
+  background-color: #2f3543;
 }
 .miniStats .container-fluid{
   height:65px;
   overflow: hidden;
   border-left:8px solid #bbfc32;
-  border-bottom-left-radius: 2px;
-  border-top-left-radius: 2px;
 }
 
 .miniStats p {
@@ -119,6 +130,10 @@ p{
   color:white;
 }
 
+
+.miniStats .user-data{
+  text-align: left;
+}
 
 
 /*Inputs / buttons*/
@@ -252,24 +267,38 @@ p{
 /* durations and timing functions.              */
 .slide-fade-in-enter-active {
   transition: all .3s ease;
-  transition-delay: 1.3s;
+  transition-delay: 1s;
 }
 .slide-fade-in-leave-active {
   transition: all .8s linear;
-  transition-delay: 1.3s;
+  transition-delay: 1s;
 }
 
 .slide-fade-in-leave-active {
   transition: all .8s linear;
-  transition-delay: 1.3s;
+  transition-delay: 1s;
 }
 
 .slide-fade-in-enter, .slide-fade-in-leave-to
 /* .slide-fade-leave-active for <2.1.8 */ {
   height:0px;
   opacity: 0;
-  transition-delay: 1.3s;
+  transition-delay: 1s;
 }
+
+
+
+
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-in-enter-active, .fade-leave-active {
+  transition: all .3s linear;
+}
+.slide-in-enter, .slide-in-leave-to{
+  height:0px;
+  transition: all .3s linear;
+}
+
 
 
 /*Animations*/
