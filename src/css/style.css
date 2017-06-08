@@ -14,7 +14,11 @@
   font-family: bigNoodle;
 }
 
-
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+    display: none;
+}
 
 html {
     height: 100%;
@@ -53,7 +57,7 @@ body {
 
 .mainFeed{
     transition: height 0.3s linear;
-    height:360px;
+    height:480px;
     overflow: hidden;
     background-color: #2f3543;
 }
@@ -261,6 +265,29 @@ p{
   color:#ff9c00;
   text-decoration: none;
 }
+
+/*Main feed*/
+.feed-tile-medium{
+  height:120px;
+}
+.nowrap {
+  white-space: nowrap;
+}
+
+/* The heart of the matter */
+.scroll-tiles > .row {
+  overflow-x: auto;
+  white-space: nowrap;
+  font-size: 0;
+  transition: all 1s;
+}
+.scroll-tiles > .row > .col-xs-6 {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+
 
 /*Animations*/
 /* Enter and leave animations can use different */

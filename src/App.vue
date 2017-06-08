@@ -24,6 +24,8 @@ import newUser from './components/newUser.vue'
 import miniStats from './components/miniStats.vue'
 import eventListener from './components/eventListener.vue'
 import mainFeed from './components/mainFeed.vue'
+
+
 export default {
   name: 'app',
   components: {
@@ -55,8 +57,6 @@ export default {
     },
   }
 }
-
-
 
 
 </script>
