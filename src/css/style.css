@@ -14,12 +14,6 @@
   font-family: bigNoodle;
 }
 
-::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
-    display: none;
-}
-
 html {
     height: 100%;
 }
@@ -270,23 +264,98 @@ p{
 .feed-tile-medium{
   height:120px;
 }
+
+.feed-tile-small i{
+  font-size: 27px;
+  line-height: 40px;
+  color: white;
+  cursor:pointer;
+}
+
+.feed-tile-small{
+  height:40px;
+}
 .nowrap {
   white-space: nowrap;
 }
 
+.stream-tile-name{
+  color:white;
+}
+
+.stream-tile-overlay{
+  width: 100%;
+position: absolute;
+height: 100%;
+/* z-index: 99999; */
+background: rgba(128, 0, 128, 0.30);
+}
+
 /* The heart of the matter */
-.scroll-tiles > .row {
-  overflow-x: auto;
+.scroll-area {
+  overflow-x: overlay;
+  overflow-y: hidden;
   white-space: nowrap;
   font-size: 0;
   transition: all 1s;
+  height: 117px;
+  transform: translateZ(1px);
 }
-.scroll-tiles > .row > .col-xs-6 {
+.scroll-area > .col-xs-6 {
   display: inline-block;
   float: none;
   vertical-align: top;
 }
 
+
+.scroll-tiles:hover ::-webkit-scrollbar-thumb{
+  background:#50492e;
+}
+
+.scroll-tiles:hover ::-webkit-scrollbar-track {
+  background:transparent;
+}
+
+
+/*Scroll*/
+::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:transparent;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+/* different cases */
+.overlay { overflow-y: overlay; }
+.overlay.custom:hover::-webkit-scrollbar { display: initial; }
+.overlay.custom::-webkit-scrollbar { display: none; }
+/* custom webkit scrollbars */
+.custom::-webkit-scrollbar {
+    width: 20px;
+}
+.custom::-webkit-scrollbar-track {
+    background-color: hsla(200, 100%, 50%, 0.5);
+    border-width: 0;
+}
+.custom::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: hsla(250, 100%, 50%, 0.75);
+    border-style: solid;
+    border-color: transparent;
+    border-width: 3px;
+    background-clip: padding-box;
+}
+/* hidden elements */
+.custom::-webkit-scrollbar-button,
+.custom::-webkit-scrollbar-track-piece,
+.custom::-webkit-scrollbar-corner,
+.custom::-webkit-resizer { display: none; }
 
 
 /*Animations*/
