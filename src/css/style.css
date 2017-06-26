@@ -15,7 +15,8 @@
 }
 
 html {
-    height: 100%;
+    width: 370px;
+    height: 630px;
 }
 body {
     height: 100%;
@@ -54,6 +55,7 @@ body {
     height:480px;
     overflow: hidden;
     background-color: #2f3543;
+    border-bottom:3px solid #ff9c00;
 }
 
 .miniStats{
@@ -158,6 +160,7 @@ p{
 
 .input-box{
   padding:0px;
+  font-family: Arial,sans-serif;
 }
 
 
@@ -263,6 +266,9 @@ p{
 /*Main feed*/
 .feed-tile-medium{
   height:120px;
+  display: inline-block;
+  float: none;
+  vertical-align: top;
 }
 
 .feed-tile-small i{
@@ -283,12 +289,104 @@ p{
   color:white;
 }
 
+.guide-tile-name{
+  color:white;
+  white-space: initial;
+}
+
 .stream-tile-overlay{
   width: 100%;
-position: absolute;
-height: 100%;
-/* z-index: 99999; */
-background: rgba(128, 0, 128, 0.30);
+  position: absolute;
+  height: 100%;
+  /* z-index: 99999; */
+  background: rgba(128, 0, 128, 0.45);
+  transition: .2s;
+}
+
+.guide-tile-overlay{
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  /* z-index: 99999; */
+  background: rgba(128, 0, 128, 0.45);
+  transition: .2s;
+  margin-left:-15px;
+}
+
+.feed-tile-medium:hover .stream-tile-overlay{
+  width: 100%;
+  background: rgba(128, 0, 128, 0.12);
+}
+
+
+.stat-card{
+  background-color:#3c4860;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.stat-card { border-left:3px solid rgba(250, 243, 255, 0.3) }
+
+.bg-icon{
+  content: "";
+  position: absolute;
+  width: 43%;
+  height: auto;
+  top: -34px;
+  right: -44px;
+  background-position: 100%;
+  z-index: 0;
+}
+
+
+.bg-icon svg {
+    fill: hsla(0,0%,100%,.05);
+    height: 170px;
+    width: 170px;
+    position: absolute;
+    right: 0;
+}
+
+
+
+.bg-icon-guides{
+  content: "";
+  position: absolute;
+  width: 43%;
+  height: auto;
+  top: -34px;
+  right: -44px;
+  background-position: 100%;
+  z-index: 0;
+}
+
+
+.bg-icon-guides img svg {
+    fill: hsla(0,0%,100%,.05);
+    height: 170px;
+    width: 170px;
+    position: absolute;
+    right: 0;
+}
+
+
+
+.card-heading{
+  color: #f0edf2;
+  text-align: left;
+  line-height: .8;
+  font-size: 4.8rem;
+}
+
+.card-copy{
+  font-family: FuturaNo2D,century gothic,arial,sans-serif;
+  font-weight: 600;
+  color: rgba(240,237,242,.6);
+  margin-top: 6px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-align: left;
+  font-size: 20px;
 }
 
 /* The heart of the matter */
@@ -297,14 +395,36 @@ background: rgba(128, 0, 128, 0.30);
   overflow-y: hidden;
   white-space: nowrap;
   font-size: 0;
-  transition: all 1s;
+  transition: 1s;
   height: 117px;
   transform: translateZ(1px);
+  transition: 1s ease;
 }
-.scroll-area > .col-xs-6 {
-  display: inline-block;
-  float: none;
-  vertical-align: top;
+
+.scroll-area-stats{
+  overflow-x: overlay;
+  overflow-y: hidden;
+  white-space: nowrap;
+  font-size: 0;
+  transition: 1s;
+  height: 117px;
+  transform: translateZ(1px);
+  transition: 1s ease;
+}
+
+.scroll-area-guides{
+  overflow-x: overlay;
+  overflow-y: hidden;
+  white-space: nowrap;
+  font-size: 0;
+  transition: 1s;
+  height: 117px;
+  transform: translateZ(1px);
+  transition: 1s ease;
+}
+
+.scroll-tiles{
+  transition: 1s ease;
 }
 
 
@@ -317,7 +437,7 @@ background: rgba(128, 0, 128, 0.30);
 }
 
 
-/*Scroll*/
+/*Scroll
 ::-webkit-scrollbar {
   width: 5px;
   height: 8px;
@@ -328,6 +448,19 @@ background: rgba(128, 0, 128, 0.30);
 }
 ::-webkit-scrollbar-track {
   background: transparent;
+}*/
+
+::-webkit-scrollbar {
+  width: .4em;
+}
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb {
+  overflow:visible;
+  border-radius: 4px;
+  height:8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.1);
 }
 
 

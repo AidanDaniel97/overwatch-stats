@@ -34,20 +34,19 @@
 			return{
 				message: "mini stats",
 				user:{
-					battlenetName:  this.userData.userbattlenet,
-					region:  this.userData.userRegion,
+					battlenetName:  this.userData.userData.userbattlenet,
+					region:  this.userData.userData.userRegion,
 					quickplayStats: "",
-					avatar: this.userData.userData[this.userData.userRegion].stats.quickplay.overall_stats.avatar,
+					avatar: this.userData.userData.userData[this.userData.userData.userRegion].stats.quickplay.overall_stats.avatar,
 					competitiveStats: "",
 					statsRoute: "",
-					userLevel: this.userData.userData[this.userData.userRegion].stats.quickplay.overall_stats.level,
+					userLevel: this.userData.userData.userData[this.userData.userData.userRegion].stats.quickplay.overall_stats.level,
 				},
 				json_response: "No response data"
 			}
 		},
 		props: {
 			userData: app.userData, // you need to give the parent components' data here.
-			userRegion: "eu",
 		 },
 		methods:{
 			dragWindow: function(){
@@ -92,3 +91,12 @@
 
 	*/
 </style>
+
+<!--
+Todo:
+add some sort of tracking per match that will show in the mini stats,
+
+death coun, kill count - live stats for the game
+
+
+-->

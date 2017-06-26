@@ -2,20 +2,20 @@
   <div id="app">
   <!-- Handlebars template -->
   <transition name="slide-fade-out">
-    <newUser @playerSet="onPlayerSet" v-if="firstLaunch"></newUser>
+    <newUser @playerSet="onPlayerSet" v-if="userObject.firstLaunch"></newUser>
   </transition>
 
   <transition name="slide-fade-in">
-    <miniStats :userData='userData' @toggleFeed="onToggleFeed" v-if="!firstLaunch"></miniStats>
+    <miniStats :userData='userObject' @toggleFeed="onToggleFeed" v-if="!userObject.firstLaunch"></miniStats>
   </transition>
 
   <transition name="slide-in">
-    <mainFeed v-if="toggleFeed"></mainFeed>
+    <mainFeed :userData='userObject, currentHero' v-if="toggleFeed"></mainFeed>
   </transition>
 
 
   <!--Load event listener-->
-  <eventListener></eventListener>
+  <eventListener @gameEvent="onGameEvent"></eventListener>
   </div>
 </template>
 
@@ -36,16 +36,31 @@ export default {
   },
 	data(){
 		return{
-      firstLaunch: true,//set to true for production
       userData: null,
-      toggleFeed: false
+      toggleFeed: false,
+      userObject: {
+        firstLaunch: true,
+        userData: null
+      },
+      currentHero: "winston",
 		}
 	},
+  created: function () {
+    console.log("Checking first launch: ", JSON.parse(localStorage.getItem("userData")))
+    if (!JSON.parse(localStorage.getItem("userObject"))){
+      this.userObject.firstLaunch = true;
+    }else{
+      this.userObject.firstLaunch = false;
+      //Set userObject
+      this.userObject = JSON.parse(localStorage.getItem("userObject"))
+    }
+  },
   methods:{
     onPlayerSet (user_data) {
-      console.log("Value recieved" , user_data) // someValue
-      this.userData = user_data;
-      this.firstLaunch = false;
+      console.log("Player set: " , user_data) // someValue
+      this.userObject.userData = user_data;
+      this.userObject.firstLaunch = false;
+      localStorage.setItem("userObject", JSON.stringify(this.userObject))
     },
     onToggleFeed(toggle){
       console.log("Feed toggled");
@@ -54,6 +69,110 @@ export default {
       }else{
         this.toggleFeed = true;
       }
+    },
+    onGameEvent(eventRecieved){
+      console.log("Event recieved from listner component: " , eventRecieved);
+      if(eventRecieved.info){
+        console.log("info updated ", eventRecieved.info.player)
+        switch(eventRecieved.info.player.heroSelected) {
+        case "41":
+            this.currentHero = "genji"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "66":
+            this.currentHero = "mcree"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "8":
+            this.currentHero = "pharah"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "2":
+            this.currentHero = "reaper"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "110":
+            this.currentHero = "soldier76"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "46":
+            this.currentHero = "sombra"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "3":
+            this.currentHero = "tracer"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "21":
+            this.currentHero = "bastion"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "5":
+            this.currentHero = "hanzo"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "101":
+            this.currentHero = "junkrat"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "221":
+            this.currentHero = "mei"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "6":
+            this.currentHero = "torbjorn"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "10":
+            this.currentHero = "widowmaker"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "122":
+            this.currentHero = "dva"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "62":
+            this.currentHero = "orisa"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "7":
+            this.currentHero = "reinhardt"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "64":
+            this.currentHero = "roadhog"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "9":
+            this.currentHero = "winston"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "104":
+            this.currentHero = "zarya"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "59":
+            this.currentHero = "ana"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "121":
+            this.currentHero = "lucio"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "4":
+            this.currentHero = "mercy"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "22":
+            this.currentHero = "symmetra"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+        case "32":
+            this.currentHero = "zenyatta"
+            console.log("Hero selected: " , this.currentHero);
+            break;
+          }
+        }
     },
   }
 }
