@@ -36,9 +36,9 @@
 		"desktop_only": false,
 		"disable_restore_animation": true,
 		"grab_keyboard_focus": false,
-    "size": {"width": 370, "height": 630},
-    "min_size": {"width": 370, "height": 630},
-    "max_size": {"width": 370, "height": 630}, 
+    "size": {"width": 1000, "height": 630},
+    "min_size": {"width": 1000, "height": 630},
+    "max_size": {"width": 1000, "height": 630}, 
 		"start_position": {
 		  "left": 100,
 		  "top": 100

@@ -15,9 +15,10 @@
 }
 
 html {
-    width: 370px;
+    width: 880px;
     height: 630px;
 }
+
 body {
     height: 100%;
     margin: 0;
@@ -47,19 +48,30 @@ body {
   height:360px;
   overflow: hidden;
   background-color: #2f3543;
+  width:370px;
 }
 
 
 .mainFeed{
     transition: height 0.3s linear;
     height:480px;
+    width: 370px;
     overflow: hidden;
     background-color: #2f3543;
     border-bottom:3px solid #ff9c00;
 }
 
+.guidesWindow{
+  width: 510px;
+  height: 545px;
+  border-bottom: 3px solid #ff9c00;
+  float:left;
+  background: #2f3543;
+}
+
 .miniStats{
   height:65px;
+  width: 370px;
   overflow: hidden;
   cursor: pointer;
   background-color: #2f3543;
@@ -464,6 +476,20 @@ p{
 }
 
 
+
+
+/*Guides*/
+.guidesHeader{
+  text-align: center;
+  color:white;
+}
+
+.guidesContainer{
+  width:510px;
+  height:480px;
+}
+
+
 /* different cases */
 .overlay { overflow-y: overlay; }
 .overlay.custom:hover::-webkit-scrollbar { display: initial; }
@@ -526,6 +552,28 @@ p{
 .slide-in-enter, .slide-in-leave-to{
   height:0px;
   transition: all .3s linear;
+}
+
+
+
+
+/*Animations*/
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-side-out-enter-active {
+  transition: all .3s ease;
+}
+.slide-side-out-leave-active {
+  transition: all .3s linear;
+}
+
+.slide-side-out-leave-active {
+  transition: all .3s linear;
+}
+
+.slide-side-out-enter, .slide-side-out-leave-to
+/* .slide-fade-leave-active for <2.1.8 */ {
+  width:0px;
 }
 
 

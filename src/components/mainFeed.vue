@@ -218,12 +218,11 @@
 			<div class="container-fluid scroll-tiles">
 				<div class="row scroll-area-guides" id="scroll-area" >
 
-					<div v-for="guide in heroGuides[currentHero]" class="col-xs-12 feed-tile-medium stat-card">
+					<div v-for="guide in heroGuides[currentHero]" class="col-xs-12 feed-tile-medium stat-card" v-on:click="toggleGuides(guide)">
 
 
 
 						<div class="col-xs-12 feed-tile-medium ">
-							<a target="_blank" :href="guide.link">
 								<div class="bg-icon-guides">
 									<img :src="'src/assets/img/hero-icons/' + currentHero + '.svg'">
 								</div>
@@ -232,7 +231,6 @@
 										<h2 class="guide-tile-name">{{guide.name}}</h2>
 
 							</div>
-							</a>
 						</div>
 					</div>
 				</div>
@@ -270,7 +268,7 @@
 		data(){
 			return{
 				twitchStreams: [],
-				heroGuides: [], 
+				heroGuides: [],
 			}
 		},
 		created: function() {
@@ -347,6 +345,9 @@
 			    }
 				});
 			},
+			toggleGuides: function(guide){
+				this.$emit('toggleGuides',guide)
+			}
 
 	}
 	}
