@@ -52,7 +52,7 @@ export default {
         userData: null
       },
       currentGuide: null,
-      currentHero: "orisa",
+      currentHero: null,
 		}
 	},
   created: function () {
@@ -96,102 +96,104 @@ export default {
       }
     },
     onGameEvent(eventRecieved){
+      console.log(eventRecieved.info)
       console.log("Event recieved from listner component: " , eventRecieved);
       if(eventRecieved.info){
+        console.log("player number: " , )
         switch(eventRecieved.info.player.heroSelected) {
-        case 41:
+        case '41':
             this.currentHero = "genji"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 66:
+        case '66':
             this.currentHero = "mcree"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 8:
+        case '8':
             this.currentHero = "pharah"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 2:
+        case '2':
             this.currentHero = "reaper"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 110:
+        case '110':
             this.currentHero = "soldier76"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 46:
+        case '46':
             this.currentHero = "sombra"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 3:
+        case '3':
             this.currentHero = "tracer"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 21:
+        case '21':
             this.currentHero = "bastion"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 5:
+        case '5':
             this.currentHero = "hanzo"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 101:
+        case '101':
             this.currentHero = "junkrat"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 221:
+        case '221':
             this.currentHero = "mei"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 6:
+        case '6':
             this.currentHero = "torbjorn"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 10:
+        case '10':
             this.currentHero = "widowmaker"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 122:
+        case '122':
             this.currentHero = "dva"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 62:
+        case '62':
             this.currentHero = "orisa"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 7:
+        case '7':
             this.currentHero = "reinhardt"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 64:
+        case '64':
             this.currentHero = "roadhog"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 9:
+        case '9':
             this.currentHero = "winston"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 104:
+        case '104':
             this.currentHero = "zarya"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 59:
+        case '59':
             this.currentHero = "ana"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 121:
+        case '121':
             this.currentHero = "lucio"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 4:
+        case '4':
             this.currentHero = "mercy"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 22:
+        case '22':
             this.currentHero = "symmetra"
             console.log("Hero selected: " , this.currentHero);
             break;
-        case 32:
+        case '32':
             this.currentHero = "zenyatta"
             console.log("Hero selected: " , this.currentHero);
             break;

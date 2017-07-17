@@ -1,6 +1,6 @@
 <template>
 
-	<div class="guidesWindow">
+	<div  @mousedown="dragWindow" class="guidesWindow">
 
 		<h1 class="guidesHeader">{{currentGuide.name}}</h1>
 
@@ -26,12 +26,18 @@
 			}
 		},
 		created: function() {
-		
+
 
 
     },
 		methods:{
-
+			dragWindow: function(){
+				overwolf.windows.getCurrentWindow(function(result) {
+					if(result.status === "success") {
+			        overwolf.windows.dragMove(result.window.id);
+			    }
+				});
+			},
 	}
 	}
 
